@@ -10,6 +10,10 @@ Matias Windey, Gabriel Ferrero y Lucio Pavan
 
 [Casos de uso](https://docs.google.com/document/d/1EnKGazQfmV0StYz9pNWcCtSch1HhHeQ0Oy6eX6vEAkI/edit?tab=t.0)
 
+[Diagrama](https://lucid.app/lucidchart/f2065a37-c3dc-48bb-a114-80b9d9f00008/edit?invitationId=inv_76ceefda-7387-42b3-a384-6ad3876a220d&page=0_0#)
+
+
+
 
 2026
 
