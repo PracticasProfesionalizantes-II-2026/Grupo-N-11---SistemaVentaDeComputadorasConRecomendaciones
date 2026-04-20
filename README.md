@@ -19,3 +19,5 @@ Matias Windey, Gabriel Ferrero y Lucio Pavan
 
 [Documentacion v2](https://docs.google.com/document/d/1WdauFxjPpRJTAW-eYFkg1aFqtVTf9Siu0gV_0LxP3ck/edit?tab=t.0#heading=h.z6ne0og04bp5)
 
+[Documentacion Apis](https://docs.google.com/document/d/16MAnE_AXPwHJ2vYbzj2iSbfpEPhxyw0lgFYeC1fT6W0/edit?tab=t.0)
+
