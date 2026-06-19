@@ -1,0 +1,12 @@
+
+
+
+public class PcArmada
+{
+    public int IdPcArmada{ get; set; }
+    public decimal PrecioTotal { get; set; }
+    public string Descripcion { get; set; }
+    public List<Producto> Componentes { get; set; }
+    public int IdProducto { get; set; }
+    public int IdDetallePedido { get; set; }
+}
