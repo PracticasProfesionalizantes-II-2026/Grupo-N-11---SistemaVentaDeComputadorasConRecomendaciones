@@ -1,6 +1,3 @@
-
-
-
 public class ClienteLogica : IClienteLogica
 {
     private readonly IClienteRepositorio _clienteRepositorio;

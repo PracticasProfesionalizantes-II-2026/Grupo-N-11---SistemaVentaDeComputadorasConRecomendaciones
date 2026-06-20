@@ -1,13 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "67il6YCPRx8=",
+  "dgSpecHash": "3u+3E+WD+UY=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Usuario\\Documents\\GitHub\\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\\SistemaCompumundo\\Front\\Front.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\Usuario\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.25\\microsoft.netcore.app.ref.8.0.25.nupkg.sha512",
-    "C:\\Users\\Usuario\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.25\\microsoft.windowsdesktop.app.ref.8.0.25.nupkg.sha512",
-    "C:\\Users\\Usuario\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.25\\microsoft.aspnetcore.app.ref.8.0.25.nupkg.sha512",
-    "C:\\Users\\Usuario\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\8.0.25\\microsoft.netcore.app.host.win-x64.8.0.25.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Users\\Matt-\\Desktop\\Matt\\Pactica2\\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\\SistemaCompumundo\\Front\\Front.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }
