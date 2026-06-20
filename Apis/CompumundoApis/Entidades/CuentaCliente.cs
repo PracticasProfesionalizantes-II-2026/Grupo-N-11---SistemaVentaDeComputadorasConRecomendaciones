@@ -1,0 +1,15 @@
+
+
+
+public class CuentaCliente
+{
+    public int IdCuenta {get; set;}
+    public string Facturacion {get; set;}
+    public string Pais {get; set;}
+    public string provincia {get; set;}
+    public string Ciudad {get; set;}
+    public string CodigoPostal {get; set;}
+    public string Calle {get; set;}
+    public string NumeroCalle {get; set;}
+    
+}

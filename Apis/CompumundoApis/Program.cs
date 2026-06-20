@@ -1,3 +1,16 @@
+using Apis.Datos;
+using Microsoft.EntityFrameworkCore;
+using Scalar.AspNetCore;
+using Apis.Repositories;
+using Apis.Endpoints;
+using Apis.Logica;
+
+
+
+
+
+using Scalar.AspNetCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -10,6 +23,7 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    app.MapScalarApiReference();
 }
 
 app.UseHttpsRedirection();
