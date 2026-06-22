@@ -1,0 +1,58 @@
+
+
+
+public class ProveedorRepositorio : IProveedorRepositorio
+{
+    private readonly CompumundoContext _context;
+
+    public ProveedorRepositorio(CompumundoContext context)
+    {
+        _context = context;
+    }
+
+    public async Task<Proveedor> ObtenerProveedorPorId(int id)
+    {
+        return await _context.Proveedores.FindAsync(id);
+    }
+
+    public async Task<IEnumerable<Proveedor>> ObtenerTodosLosProveedores()
+    {
+        return await _context.Proveedores.ToListAsync();
+    }
+
+    public async Task<Proveedor> CrearProveedor(Proveedor proveedor)
+    {
+        _context.Proveedores.Add(proveedor);
+        await _context.SaveChangesAsync();
+        return proveedor;
+    }
+
+    public async Task<Proveedor> ActualizarProveedor(int id, Proveedor proveedor)
+    {
+        var proveedorExistente = await _context.Proveedores.FindAsync(id);
+        if (proveedorExistente == null)
+        {
+            return null;
+        }
+
+        proveedorExistente.Nombre = proveedor.Nombre;
+        proveedorExistente.Direccion = proveedor.Direccion;
+        proveedorExistente.Telefono = proveedor.Telefono;
+
+        await _context.SaveChangesAsync();
+        return proveedorExistente;
+    }
+
+    public async Task<bool> EliminarProveedor(int id)
+    {
+        var proveedor = await _context.Proveedores.FindAsync(id);
+        if (proveedor == null)
+        {
+            return false;
+        }
+
+        _context.Proveedores.Remove(proveedor);
+        await _context.SaveChangesAsync();
+        return true;
+    }
+}

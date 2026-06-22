@@ -1,0 +1,11 @@
+
+
+
+public interface IDetallePedidoLogica
+{
+    Task<DetallePedido> ObtenerDetallePedidoPorId(int id);
+    Task<IEnumerable<DetallePedido>> ObtenerTodosLosDetallesPedidos();
+    Task<DetallePedido> CrearDetallePedido(DetallePedido detallePedido);
+    Task<DetallePedido> ActualizarDetallePedido(int id, DetallePedido detallePedido);
+    Task<bool> EliminarDetallePedido(int id);
+}

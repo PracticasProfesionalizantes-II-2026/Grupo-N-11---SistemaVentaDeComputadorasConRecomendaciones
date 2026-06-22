@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "3u+3E+WD+UY=",
+  "dgSpecHash": "hs09/w2lXUI=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Matt-\\Desktop\\Matt\\Pactica2\\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\\SistemaCompumundo\\Front\\Front.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\Matt-\\Desktop\\MattSaurus\\ICES\\3ro\\Practica profecionalizante 2\\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\\SistemaCompumundo\\Front\\Front.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Matt-\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.26\\microsoft.netcore.app.ref.8.0.26.nupkg.sha512",
+    "C:\\Users\\Matt-\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.26\\microsoft.windowsdesktop.app.ref.8.0.26.nupkg.sha512",
+    "C:\\Users\\Matt-\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.26\\microsoft.aspnetcore.app.ref.8.0.26.nupkg.sha512",
+    "C:\\Users\\Matt-\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\8.0.26\\microsoft.netcore.app.host.win-x64.8.0.26.nupkg.sha512"
+  ],
   "logs": []
 }
