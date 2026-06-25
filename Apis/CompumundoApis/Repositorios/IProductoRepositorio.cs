@@ -1,6 +1,6 @@
+using CompumundoApis.Entidades;
 
-
-
+namespace CompumundoApis.Repositorios;
 public interface IProductoRepositorio
 {
     Task<Producto> ObtenerProductoPorId(int id);

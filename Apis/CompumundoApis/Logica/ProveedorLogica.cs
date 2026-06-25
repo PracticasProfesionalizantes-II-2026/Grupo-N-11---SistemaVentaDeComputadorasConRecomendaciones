@@ -1,6 +1,7 @@
+using CompumundoApis.Repositorios;
+using CompumundoApis.Entidades;
 
-
-
+namespace CompumundoApis.Logica;
 public class ProveedorLogica : IProveedorLogica
 {
     private readonly IProveedorRepositorio _proveedorRepositorio;

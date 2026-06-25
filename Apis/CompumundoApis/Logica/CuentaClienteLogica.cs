@@ -1,5 +1,8 @@
+using CompumundoApis.Repositorios;
+using CompumundoApis.Entidades;
 
 
+namespace CompumundoApis.Logica;
 public class CuentaClienteLogica : ICuentaClienteLogica
 {
     private readonly ICuentaClienteRepositorio _cuentaClienteRepositorio;

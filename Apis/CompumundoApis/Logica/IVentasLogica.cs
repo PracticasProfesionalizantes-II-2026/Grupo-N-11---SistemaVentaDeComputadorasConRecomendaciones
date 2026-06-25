@@ -1,11 +1,14 @@
+using CompumundoApis.Repositorios;
+using CompumundoApis.Entidades;
 
 
+namespace CompumundoApis.Logica;
 
 public interface IVentasLogica
 {
-    Task<Venta> ObtenerVentaPorId(int id);
-    Task<IEnumerable<Venta>> ObtenerTodasLasVentas();
-    Task<Venta> CrearVenta(Venta venta);
-    Task<Venta> ActualizarVenta(int id, Venta venta);
-    Task<bool> EliminarVenta(int id);
+    public Task<Ventas> ObtenerVentaPorId(int id);
+    public Task<IEnumerable<Ventas>> ObtenerTodasLasVentas();
+    public Task<Ventas> CrearVenta(Ventas venta);
+    public Task<Ventas> ActualizarVenta(int id, Ventas venta);
+    public Task<bool> EliminarVenta(int id);
 }

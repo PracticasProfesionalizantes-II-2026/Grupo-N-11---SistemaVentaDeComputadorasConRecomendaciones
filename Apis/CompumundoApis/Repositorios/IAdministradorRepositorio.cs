@@ -1,7 +1,7 @@
+using CompumundoApis.Entidades;
 
-
-
-public interface IAdministradorLogica
+namespace CompumundoApis.Repositorios;
+public interface IAdministradorRepositorio
 {
     Task<Administrador> ObtenerAdministradorPorId(int id);
     Task<IEnumerable<Administrador>> ObtenerTodosLosAdministradores();

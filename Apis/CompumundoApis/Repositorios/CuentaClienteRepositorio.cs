@@ -1,40 +1,44 @@
+using Microsoft.EntityFrameworkCore;
+using CompumundoApis.Entidades;
+using CompumundoApis.Datos;
 
 
+namespace CompumundoApis.Repositorios;
 
 public class CuentaClienteRepositorio : ICuentaClienteRepositorio
 {
-    private readonly CompumundoDbContext _context;
+    private readonly AppDbContext _context;
 
-    public CuentaClienteRepositorio(CompumundoDbContext context)
+    public CuentaClienteRepositorio(AppDbContext context)
     {
         _context = context;
     }
 
-    public async Task<CuentaCliente> PostCuentaClienteAsync(CuentaCliente cuentaCliente)
+    public async Task<CuentaCliente> CrearCuentaCliente(CuentaCliente cuentaCliente)
     {
         _context.CuentaClientes.Add(cuentaCliente);
         await _context.SaveChangesAsync();
         return cuentaCliente;
     }
 
-    public async Task<CuentaCliente> GetCuentaClienteByIdAsync(int id)
+    public async Task<CuentaCliente> ObtenerCuentaClientePorId(int id)
     {
         return await _context.CuentaClientes.FindAsync(id);
     }
 
-    public async Task<CuentaCliente> GetCuentaClienteAsync()
+    public async Task<IEnumerable<CuentaCliente>> ObtenerTodasLasCuentasClientes()
     {
-        return await _context.CuentaClientes.FirstOrDefaultAsync();
+        return await _context.CuentaClientes.ToListAsync();
     }
 
-    public async Task<CuentaCliente> PutCuentaClienteAsync(CuentaCliente cuentaCliente)
+    public async Task<CuentaCliente> ActualizarCuentaCliente(int id, CuentaCliente cuentaCliente)
     {
-        _context.Entry(cuentaCliente).State = EntityState.Modified;
+        _context.CuentaClientes.Update(cuentaCliente);
         await _context.SaveChangesAsync();
         return cuentaCliente;
     }
 
-    public async Task<CuentaCliente> DeleteCuentaClienteAsync(int id)
+    public async Task<bool> EliminarCuentaCliente(int id)
     {
         var cuentaCliente = await _context.CuentaClientes.FindAsync(id);
         if (cuentaCliente != null)
@@ -42,6 +46,6 @@ public class CuentaClienteRepositorio : ICuentaClienteRepositorio
             _context.CuentaClientes.Remove(cuentaCliente);
             await _context.SaveChangesAsync();
         }
-        return cuentaCliente;
+        return true;
     }
 }

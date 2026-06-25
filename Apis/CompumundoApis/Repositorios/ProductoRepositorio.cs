@@ -1,11 +1,13 @@
+using CompumundoApis.Datos;
+using Microsoft.EntityFrameworkCore;
+using CompumundoApis.Entidades;
 
-
-
+namespace CompumundoApis.Repositorios;
 public class ProductoRepositorio : IProductoRepositorio
 {
-    private readonly CompumundoContext _context;
+    private readonly AppDbContext _context;
 
-    public ProductoRepositorio(CompumundoContext context)
+    public ProductoRepositorio(AppDbContext context)
     {
         _context = context;
     }

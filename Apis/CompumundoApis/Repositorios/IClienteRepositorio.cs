@@ -1,11 +1,13 @@
+using CompumundoApis.Entidades;
 
 
+namespace CompumundoApis.Repositorios;
 
-public interface IClienteLogica
+public interface IClienteRepositorio
 {
-    Task<Cliente> PostClienteAsync(Cliente cliente);
-    Task<Cliente> GetClienteByIdAsync(int id);
-    Task<Cliente> GetClienteAsync();
-    Task<Cliente> PutClienteAsync(Cliente cliente);
-    Task<Cliente> DeleteClienteAsync(int id);
+    public Task<Cliente> CrearCliente(Cliente cliente);
+    public Task<Cliente> ObtenerClientePorId(int id);
+    public Task<IEnumerable<Cliente>> ObtenerTodosLosClientes();
+    public Task<Cliente> ActualizarCliente(Cliente cliente);
+    public Task<bool> EliminarCliente(int id);
 }

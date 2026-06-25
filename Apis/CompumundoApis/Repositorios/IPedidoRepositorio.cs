@@ -1,6 +1,6 @@
+using CompumundoApis.Entidades;
 
-
-
+namespace CompumundoApis.Repositorios;
 public interface IPedidoRepositorio
 {
     Task<Pedido> ObtenerPedidoPorId(int id);

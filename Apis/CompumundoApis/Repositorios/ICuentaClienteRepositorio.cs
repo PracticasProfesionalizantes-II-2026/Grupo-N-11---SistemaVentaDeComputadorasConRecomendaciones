@@ -1,11 +1,13 @@
+using CompumundoApis.Entidades;
 
 
+namespace CompumundoApis.Repositorios;
 
 public interface ICuentaClienteRepositorio
 {
-    Task<CuentaCliente> ObtenerCuentaClientePorId(int id);
-    Task<IEnumerable<CuentaCliente>> ObtenerTodasLasCuentasClientes();
-    Task<CuentaCliente> CrearCuentaCliente(CuentaCliente cuentaCliente);
-    Task<CuentaCliente> ActualizarCuentaCliente(int id, CuentaCliente cuentaCliente);
-    Task<bool> EliminarCuentaCliente(int id);
+    public  Task<CuentaCliente> ObtenerCuentaClientePorId(int id);
+    public  Task<IEnumerable<CuentaCliente>> ObtenerTodasLasCuentasClientes();
+    public Task<CuentaCliente> CrearCuentaCliente(CuentaCliente cuentaCliente);
+    public Task<CuentaCliente> ActualizarCuentaCliente(int id, CuentaCliente cuentaCliente);
+    public Task<bool> EliminarCuentaCliente(int id);
 }

@@ -1,33 +1,37 @@
+using CompumundoApis.Datos;
+using Microsoft.EntityFrameworkCore;
+using CompumundoApis.Logica;
+using CompumundoApis.Entidades;
 
+namespace CompumundoApis.Repositorios;
 
-
-public class VentasRepositorio : IVentasLogica
+public class VentasRepositorio : IVentasRepositorio
 {
-    private readonly CompumundoContext _context;
+    private readonly AppDbContext _context;
 
-    public VentasRepositorio(CompumundoContext context)
+    public VentasRepositorio(AppDbContext context)
     {
         _context = context;
     }
 
-    public async Task<Venta> ObtenerVentaPorId(int id)
+    public async Task<Ventas> ObtenerVentaPorId(int id)
     {
         return await _context.Ventas.FindAsync(id);
     }
 
-    public async Task<IEnumerable<Venta>> ObtenerTodasLasVentas()
+    public async Task<IEnumerable<Ventas>> ObtenerTodasLasVentas()
     {
         return await _context.Ventas.ToListAsync();
     }
 
-    public async Task<Venta> CrearVenta(Venta venta)
+    public async Task<Ventas> CrearVenta(Ventas venta)
     {
         _context.Ventas.Add(venta);
         await _context.SaveChangesAsync();
         return venta;
     }
 
-    public async Task<Venta> ActualizarVenta(int id, Venta venta)
+    public async Task<Ventas> ActualizarVenta(int id, Ventas venta)
     {
         var ventaExistente = await _context.Ventas.FindAsync(id);
         if (ventaExistente == null)
@@ -36,8 +40,8 @@ public class VentasRepositorio : IVentasLogica
         }
 
         // Actualizar las propiedades de la venta existente
-        ventaExistente.Fecha = venta.Fecha;
-        ventaExistente.Total = venta.Total;
+        ventaExistente.FechaVenta = venta.FechaVenta;
+        ventaExistente.PrecioVenta = venta.PrecioVenta;
         // Actualizar otras propiedades según sea necesario
 
         await _context.SaveChangesAsync();

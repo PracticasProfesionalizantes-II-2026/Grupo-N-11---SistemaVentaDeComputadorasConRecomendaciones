@@ -1,11 +1,15 @@
+using CompumundoApis.Repositorios;
+using CompumundoApis.Entidades;
 
 
+
+namespace CompumundoApis.Logica;
 
 public interface IDetallePedidoLogica
 {
-    Task<DetallePedido> ObtenerDetallePedidoPorId(int id);
-    Task<IEnumerable<DetallePedido>> ObtenerTodosLosDetallesPedidos();
-    Task<DetallePedido> CrearDetallePedido(DetallePedido detallePedido);
-    Task<DetallePedido> ActualizarDetallePedido(int id, DetallePedido detallePedido);
-    Task<bool> EliminarDetallePedido(int id);
+    public Task<DetallePedido> ObtenerDetallePedidoPorId(int id);
+    public Task<IEnumerable<DetallePedido>> ObtenerTodosLosDetallesPedidos();
+    public Task<DetallePedido> CrearDetallePedido(DetallePedido detallePedido);
+    public Task<DetallePedido> ActualizarDetallePedido(int id, DetallePedido detallePedido);
+    public Task<bool> EliminarDetallePedido(int id);
 }

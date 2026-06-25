@@ -1,5 +1,5 @@
 
-
+namespace CompumundoApis.Entidades;
 
 public class Pedido
 {

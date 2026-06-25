@@ -1,7 +1,10 @@
+using CompumundoApis.Repositorios;
+using CompumundoApis.Entidades;
 
 
 
-public class VentasLogicas : IVentasLogicas
+namespace CompumundoApis.Logica;
+public class VentasLogicas : IVentasLogica
 {
     private readonly IVentasRepositorio _ventasRepositorio;
 
@@ -10,22 +13,22 @@ public class VentasLogicas : IVentasLogicas
         _ventasRepositorio = ventasRepositorio;
     }
 
-    public async Task<Venta> ObtenerVentaPorId(int id)
+    public async Task<Ventas> ObtenerVentaPorId(int id)
     {
         return await _ventasRepositorio.ObtenerVentaPorId(id);
     }
 
-    public async Task<IEnumerable<Venta>> ObtenerTodasLasVentas()
+    public async Task<IEnumerable<Ventas>> ObtenerTodasLasVentas()
     {
         return await _ventasRepositorio.ObtenerTodasLasVentas();
     }
 
-    public async Task<Venta> CrearVenta(Venta venta)
+    public async Task<Ventas> CrearVenta(Ventas venta)
     {
         return await _ventasRepositorio.CrearVenta(venta);
     }
 
-    public async Task<Venta> ActualizarVenta(int id, Venta venta)
+    public async Task<Ventas> ActualizarVenta(int id, Ventas venta)
     {
         return await _ventasRepositorio.ActualizarVenta(id, venta);
     }

@@ -1,11 +1,16 @@
+using CompumundoApis.Datos;
+using Microsoft.EntityFrameworkCore;
+using CompumundoApis.Entidades;
 
 
+
+namespace CompumundoApis.Repositorios;
 
 public class PedidoRepositorio : IPedidoRepositorio
 {
-    private readonly CompumundoContext _context;
+    private readonly AppDbContext _context;
 
-    public PedidoRepositorio(CompumundoContext context)
+    public PedidoRepositorio(AppDbContext context)
     {
         _context = context;
     }
@@ -36,7 +41,7 @@ public class PedidoRepositorio : IPedidoRepositorio
         }
 
         // Actualizar las propiedades del pedido existente con los valores del nuevo pedido
-        pedidoExistente.Fecha = pedido.Fecha;
+        pedidoExistente.FechaPedido = pedido.FechaPedido;
         pedidoExistente.Total = pedido.Total;
         // Actualiza otras propiedades según sea necesario
 

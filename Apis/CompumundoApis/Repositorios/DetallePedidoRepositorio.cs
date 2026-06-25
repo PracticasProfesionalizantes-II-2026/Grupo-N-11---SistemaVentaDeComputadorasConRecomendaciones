@@ -1,11 +1,14 @@
+using CompumundoApis.Entidades;
+using CompumundoApis.Datos;
+using Microsoft.EntityFrameworkCore;
 
-
+namespace CompumundoApis.Repositorios;
 
 public class DetallePedidoRepositorio : IDetallePedidoRepositorio
 {
-    private readonly CompumundoDbContext _context;
+    private readonly AppDbContext _context;
 
-    public DetallePedidoRepositorio(CompumundoDbContext context)
+    public DetallePedidoRepositorio(AppDbContext context)
     {
         _context = context;
     }
@@ -36,8 +39,7 @@ public class DetallePedidoRepositorio : IDetallePedidoRepositorio
         }
 
         detalleExistente.IdProducto = detallePedido.IdProducto;
-        detalleExistente.Cantidad = detallePedido.Cantidad;
-        detalleExistente.PrecioUnitario = detallePedido.PrecioUnitario;
+
 
         await _context.SaveChangesAsync();
         return detalleExistente;

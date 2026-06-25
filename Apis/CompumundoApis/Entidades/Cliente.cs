@@ -1,5 +1,5 @@
 
-
+namespace CompumundoApis.Entidades;
 public class Cliente
 {
     public int Id { get; set; }

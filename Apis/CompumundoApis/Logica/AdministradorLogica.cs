@@ -1,7 +1,11 @@
+using CompumundoApis.Repositorios;
+using CompumundoApis.Entidades;
 
 
+namespace CompumundoApis.Logica;
 
-private class AdministradorLogica : IAdministradorLogica
+
+public class AdministradorLogica : IAdministradorLogica
 {
     private readonly IAdministradorRepositorio _administradorRepositorio;
 
@@ -10,26 +14,28 @@ private class AdministradorLogica : IAdministradorLogica
         _administradorRepositorio = administradorRepositorio;
     }
 
-    public Task<Administrador> PostAdministradorAsync(Administrador administrador)
+    public Task<Administrador> CrearAdministrador(Administrador administrador)
     {
-        return _administradorRepositorio.PostAdministradorAsync(administrador);
+        return _administradorRepositorio.CrearAdministrador(administrador);
     }
 
-    public Task<Administrador> GetAdministradorByIdAsync(int id)
+    public Task<Administrador> ObtenerAdministradorPorId(int id)
     {
-        return _administradorRepositorio.GetAdministradorByIdAsync(id);
-    }
-    public Task<Administrador> GetAdministradorAsync()
-    {
-        return _administradorRepositorio.GetAdministradorAsync();
+        return _administradorRepositorio.ObtenerAdministradorPorId(id);
     }
 
-    public Task<Administrador> PutAdministradorAsync(Administrador administrador)
+    public Task<IEnumerable<Administrador>> ObtenerTodosLosAdministradores()
     {
-        return _administradorRepositorio.PutAdministradorAsync(administrador);
+        return _administradorRepositorio.ObtenerTodosLosAdministradores();
     }
-    public Task<Administrador> DeleteAdministradorAsync(int id)
+
+    public Task<Administrador> ActualizarAdministrador(int id, Administrador administrador)
     {
-        return _administradorRepositorio.DeleteAdministradorAsync(id);
+        return _administradorRepositorio.ActualizarAdministrador(id, administrador);
+    }
+
+    public Task<bool> EliminarAdministrador(int id)
+    {
+        return _administradorRepositorio.EliminarAdministrador(id);
     }
 }

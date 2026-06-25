@@ -1,4 +1,5 @@
 
+namespace CompumundoApis.Entidades;
 
 public class Administrador
 {

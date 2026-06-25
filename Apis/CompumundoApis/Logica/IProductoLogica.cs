@@ -1,11 +1,14 @@
+using CompumundoApis.Repositorios;
+using CompumundoApis.Entidades;
 
 
+namespace CompumundoApis.Logica;
 
 public interface IProductoLogica
 {
-    Task<Producto> ObtenerProductoPorId(int id);
-    Task<IEnumerable<Producto>> ObtenerTodosLosProductos();
-    Task<Producto> CrearProducto(Producto producto);
-    Task<Producto> ActualizarProducto(int id, Producto producto);
-    Task<bool> EliminarProducto(int id);
+    public Task<Producto> ObtenerProductoPorId(int id);
+    public Task<IEnumerable<Producto>> ObtenerTodosLosProductos();
+    public Task<Producto> CrearProducto(Producto producto);
+    public Task<Producto> ActualizarProducto(int id, Producto producto);
+    public Task<bool> EliminarProducto(int id);
 }

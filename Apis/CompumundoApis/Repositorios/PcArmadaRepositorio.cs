@@ -1,35 +1,37 @@
+using CompumundoApis.Datos;
+using Microsoft.EntityFrameworkCore;
+using CompumundoApis.Entidades;
 
-
-
+namespace CompumundoApis.Repositorios;
 public class PcArmadaRepositorio : IPcArmadaRepositorio
 {
-    private readonly CompumundoDbContext _context;
+    private readonly AppDbContext _context;
 
-    public PcArmadaRepositorio(CompumundoDbContext context)
+    public PcArmadaRepositorio(AppDbContext context)
     {
         _context = context;
     }
 
     public async Task<PcArmada> ObtenerPcArmadaPorId(int id)
     {
-        return await _context.PcsArmadas.FindAsync(id);
+        return await _context.PcArmadas.FindAsync(id);
     }
 
     public async Task<IEnumerable<PcArmada>> ObtenerTodasLasPcsArmadas()
     {
-        return await _context.PcsArmadas.ToListAsync();
+        return await _context.PcArmadas.ToListAsync();
     }
 
     public async Task<PcArmada> CrearPcArmada(PcArmada pcArmada)
     {
-        _context.PcsArmadas.Add(pcArmada);
+        _context.PcArmadas.Add(pcArmada);
         await _context.SaveChangesAsync();
         return pcArmada;
     }
 
     public async Task<PcArmada> ActualizarPcArmada(int id, PcArmada pcArmada)
     {
-        var existingPcArmada = await _context.PcsArmadas.FindAsync(id);
+        var existingPcArmada = await _context.PcArmadas.FindAsync(id);
         if (existingPcArmada == null)
         {
             return null;
@@ -38,7 +40,7 @@ public class PcArmadaRepositorio : IPcArmadaRepositorio
         // Actualizar las propiedades del objeto existente con los valores del objeto proporcionado
         existingPcArmada.Nombre = pcArmada.Nombre;
         existingPcArmada.Descripcion = pcArmada.Descripcion;
-        existingPcArmada.Precio = pcArmada.Precio;
+        existingPcArmada.PrecioTotal = pcArmada.PrecioTotal;
 
         await _context.SaveChangesAsync();
         return existingPcArmada;
@@ -46,13 +48,13 @@ public class PcArmadaRepositorio : IPcArmadaRepositorio
 
     public async Task<bool> EliminarPcArmada(int id)
     {
-        var pcArmada = await _context.PcsArmadas.FindAsync(id);
+        var pcArmada = await _context.PcArmadas.FindAsync(id);
         if (pcArmada == null)
         {
             return false;
         }
 
-        _context.PcsArmadas.Remove(pcArmada);
+        _context.PcArmadas.Remove(pcArmada);
         await _context.SaveChangesAsync();
         return true;
     }

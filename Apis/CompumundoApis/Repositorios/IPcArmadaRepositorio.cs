@@ -1,6 +1,6 @@
+using CompumundoApis.Entidades;
 
-
-
+namespace CompumundoApis.Repositorios;
 public interface IPcArmadaRepositorio
 {
     Task<PcArmada> ObtenerPcArmadaPorId(int id);

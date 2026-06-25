@@ -1,11 +1,12 @@
 
+using CompumundoApis.Entidades;
 
-
+namespace CompumundoApis.Repositorios;
 public interface IVentasRepositorio
 {
-    Task<Venta> ObtenerVentaPorId(int id);
-    Task<IEnumerable<Venta>> ObtenerTodasLasVentas();
-    Task<Venta> CrearVenta(Venta venta);
-    Task<Venta> ActualizarVenta(int id, Venta venta);
+    Task<Ventas> ObtenerVentaPorId(int id);
+    Task<IEnumerable<Ventas>> ObtenerTodasLasVentas();
+    Task<Ventas> CrearVenta(Ventas venta);
+    Task<Ventas> ActualizarVenta(int id, Ventas venta);
     Task<bool> EliminarVenta(int id);
 }

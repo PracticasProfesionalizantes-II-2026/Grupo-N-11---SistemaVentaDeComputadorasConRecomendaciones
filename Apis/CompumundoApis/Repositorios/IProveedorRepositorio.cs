@@ -1,6 +1,6 @@
+using CompumundoApis.Entidades;
 
-
-
+namespace CompumundoApis.Repositorios;
 public interface IProveedorRepositorio
 {
     Task<Proveedor> ObtenerProveedorPorId(int id);

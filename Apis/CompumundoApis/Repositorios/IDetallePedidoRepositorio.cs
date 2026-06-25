@@ -1,7 +1,9 @@
+using CompumundoApis.Entidades;
 
 
+namespace CompumundoApis.Repositorios;
 
-public interface IDetallePedidoLogica
+public interface IDetallePedidoRepositorio
 {
     Task<DetallePedido> ObtenerDetallePedidoPorId(int id);
     Task<IEnumerable<DetallePedido>> ObtenerTodosLosDetallesPedidos();

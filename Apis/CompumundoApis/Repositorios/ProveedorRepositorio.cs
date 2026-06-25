@@ -1,11 +1,16 @@
 
 
+using CompumundoApis;
+using CompumundoApis.Datos;
+using CompumundoApis.Entidades;
+using Microsoft.EntityFrameworkCore;
 
+namespace CompumundoApis.Repositorios;
 public class ProveedorRepositorio : IProveedorRepositorio
 {
-    private readonly CompumundoContext _context;
+    private readonly AppDbContext _context;
 
-    public ProveedorRepositorio(CompumundoContext context)
+    public ProveedorRepositorio(AppDbContext context)
     {
         _context = context;
     }
@@ -36,8 +41,8 @@ public class ProveedorRepositorio : IProveedorRepositorio
         }
 
         proveedorExistente.Nombre = proveedor.Nombre;
-        proveedorExistente.Direccion = proveedor.Direccion;
-        proveedorExistente.Telefono = proveedor.Telefono;
+        proveedorExistente.Contacto = proveedor.Contacto;
+        proveedorExistente.CorreoElectronico = proveedor.CorreoElectronico;
 
         await _context.SaveChangesAsync();
         return proveedorExistente;

@@ -1,5 +1,9 @@
+using CompumundoApis.Repositorios;
+using CompumundoApis.Entidades;
+using Microsoft.EntityFrameworkCore;
 
 
+namespace CompumundoApis.Logica;
 public class ClienteLogica : IClienteLogica
 {
     private readonly IClienteRepositorio _clienteRepositorio;
@@ -9,27 +13,30 @@ public class ClienteLogica : IClienteLogica
         _clienteRepositorio = clienteRepositorio;
     }
 
-   public Task<Cliente> PostClienteAsync(Cliente cliente)
+    public Task<Cliente> CrearCliente(Cliente cliente)
     {
-        return _clienteRepositorio.PostClienteAsync(cliente);
+        return _clienteRepositorio.CrearCliente(cliente);
     }
 
-    public Task<Cliente> GetClienteByIdAsync(int id)
+    public Task<Cliente> ObtenerClientePorId(int id)
     {
-        return _clienteRepositorio.GetClienteByIdAsync(id);
-    }
-    public Task<Cliente> GetClienteAsync()
-    {
-        return _clienteRepositorio.GetClienteAsync();
+        return _clienteRepositorio.ObtenerClientePorId(id);
     }
 
-    public Task<Cliente> PutClienteAsync(Cliente cliente)
+    public Task<IEnumerable<Cliente>> ObtenerTodosLosClientes()
     {
-        return _clienteRepositorio.PutClienteAsync(cliente);
+        return _clienteRepositorio.ObtenerTodosLosClientes();
     }
-    public Task<Cliente> DeleteClienteAsync(int id)
+
+    public Task<Cliente> ActualizarCliente(int id, Cliente cliente)
     {
-        return _clienteRepositorio.DeleteClienteAsync(id);
+        _ = id;
+        return _clienteRepositorio.ActualizarCliente(cliente);
+    }
+
+    public Task<bool> EliminarCliente(int id)
+    {
+        return _clienteRepositorio.EliminarCliente(id);
     }
 
 }

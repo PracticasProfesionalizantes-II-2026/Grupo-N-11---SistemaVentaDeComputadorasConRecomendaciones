@@ -1,43 +1,48 @@
+using CompumundoApis.Datos;
+using CompumundoApis.Entidades;
 
 
-
+namespace CompumundoApis.Repositorios;
 public class ClienteRepositorio : IClienteRepositorio
 {
+    private readonly AppDbContext _context;
 
+    public ClienteRepositorio(AppDbContext context)
+    {
+        _context = context;
+    }
 
-    private readonly List<Cliente> clientes;
-
-    private readonly AppdbContext _context;
-    
-    public task<Cliente> PostClienteAsync(Cliente cliente)
+    public async Task<Cliente> CrearCliente(Cliente cliente)
     {
         _context.Clientes.Add(cliente);
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
+        return cliente;
     }
-    public task<Cliente> GetClienteByIdAsync(int id)
+    public async Task<Cliente> ObtenerClientePorId(int id)
     {
-        var cliente = _context.Clientes.Find(id);
-        return Task.FromResult(cliente);
+        var cliente = await _context.Clientes.FindAsync(id);
+        return cliente;
     }
-    public task<Cliente> GetClienteAsync()
+
+    public Task<IEnumerable<Cliente>> ObtenerTodosLosClientes()
     {
         return Task.FromResult(_context.Clientes.AsEnumerable());
     }
-    public task<Cliente> PutClienteAsync(Cliente cliente)
+    public async Task<Cliente> ActualizarCliente(Cliente cliente)
     {
-        _Context.Clientes.Update(cliente);
-        _Context.SaveChanges();
-        return Task.FromResult(Context.Clientes.AsEnumerable());
+        _context.Clientes.Update(cliente);
+        await _context.SaveChangesAsync();
+        return cliente;
     }
-    public task<Cliente> DeleteClienteAsync(int id)
+    public async Task<bool> EliminarCliente(int id)
     {
-        var cliente = _context.Clientes.Find(id);
-        if (cliente != null)     
+        var cliente = await _context.Clientes.FindAsync(id);
+        if (cliente != null)
         {
             _context.Clientes.Remove(cliente);
-            _context.SaveChanges();
-            
+            await _context.SaveChangesAsync();
+            return true;
         }
-        return Task.FromResult<Cliente>(null);
+        return false;
     }
 }
