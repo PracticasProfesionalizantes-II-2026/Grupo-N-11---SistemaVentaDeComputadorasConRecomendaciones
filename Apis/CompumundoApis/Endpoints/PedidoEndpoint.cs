@@ -1,55 +1,77 @@
 using CompumundoApis.Entidades;
 using CompumundoApis.Logica;
+using Microsoft.AspNetCore.Mvc;
+
+
+
 
 namespace CompumundoApis.Endpoints;
 public static class PedidoEndpoint
 {
    public static void MapPedidoEndpoints(this WebApplication app)
     {
-        app.MapPost("/Pedido", async (PedidoLogica pedidoLogica, Pedido pedido) =>
-        {
-           await pedidoLogica.CrearPedido(pedido);
-            return Results.Ok();
-        }); 
-
-        app.MapGet("/Pedido", async (PedidoLogica pedidoLogica) =>
+        // 1. Obtener todos los pedidos (GET)
+        app.MapGet("/Pedido", async (
+            [FromServices] IPedidoLogica pedidoLogica) =>
         {
             var pedidos = await pedidoLogica.ObtenerTodosLosPedidos();
             return Results.Ok(pedidos);
         });
 
-        app.MapGet("/Pedido/{id}", async (PedidoLogica pedidoLogica, int id) =>
+        // 2. Obtener pedido por ID (GET)
+        app.MapGet("/Pedido/{id}", async (
+            [FromServices] IPedidoLogica pedidoLogica, 
+            [FromRoute] int id) =>
         {
             var pedido = await pedidoLogica.ObtenerPedidoPorId(id);
+            
             if (pedido == null)
             {
                 return Results.NotFound();
             }
+            
             return Results.Ok(pedido);
         });
 
-        app.MapPut("/Pedido/{id}", async (PedidoLogica pedidoLogica, int id, Pedido pedido) =>
+        // 3. Crear pedido (POST)
+        app.MapPost("/Pedido", async (
+            [FromServices] IPedidoLogica pedidoLogica, 
+            [FromBody] Pedido pedido) =>
         {
-            var existingPedido = await pedidoLogica.ObtenerPedidoPorId(id);
-            if (existingPedido == null)
-            {
-                return Results.NotFound();
-            }
-
-            await pedidoLogica.ActualizarPedido(id, pedido);
-            return Results.Ok();
+            var nuevoPedido = await pedidoLogica.CrearPedido(pedido);
+            
+            return Results.Created($"/Pedido/{nuevoPedido.Id}", nuevoPedido); 
         });
 
-        app.MapDelete("/Pedido/{id}", async (PedidoLogica pedidoLogica, int id) =>
+        // 4. Actualizar pedido (PUT)
+        app.MapPut("/Pedido/{id}", async (
+            [FromServices] IPedidoLogica pedidoLogica, 
+            [FromRoute] int id, 
+            [FromBody] Pedido pedido) =>
         {
-            var existingPedido = await pedidoLogica.ObtenerPedidoPorId(id);
-            if (existingPedido == null)
+            var pedidoActualizado = await pedidoLogica.ActualizarPedido(id, pedido);
+            
+            if (pedidoActualizado == null)
             {
                 return Results.NotFound();
             }
 
-            await pedidoLogica.EliminarPedido(id);
-            return Results.Ok();
+            return Results.Ok(pedidoActualizado);
+        });
+
+        // 5. Eliminar pedido (DELETE)
+        app.MapDelete("/Pedido/{id}", async (
+            [FromServices] IPedidoLogica pedidoLogica, 
+            [FromRoute] int id) =>
+        {
+            var eliminado = await pedidoLogica.EliminarPedido(id);
+            
+            if (!eliminado)
+            {
+                return Results.NotFound();
+            }
+
+            return Results.NoContent();
         });
     }
 }

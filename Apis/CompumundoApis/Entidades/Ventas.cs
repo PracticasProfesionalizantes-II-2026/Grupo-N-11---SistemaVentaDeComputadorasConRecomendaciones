@@ -3,7 +3,7 @@ namespace CompumundoApis.Entidades;
 
 public class Ventas
 {
-    public int IdVenta {get;set;}
+    public int VentasId {get;set;}
     public string ProductoVendido {get;set;}
     public decimal PrecioVenta {get;set;}
     public DateTime FechaVenta {get;set;}

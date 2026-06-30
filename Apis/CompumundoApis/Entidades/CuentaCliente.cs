@@ -3,7 +3,7 @@ namespace CompumundoApis.Entidades;
 
 public class CuentaCliente
 {
-    public int IdCuenta {get; set;}
+    public int CuentaClienteId {get; set;}
     public string Facturacion {get; set;}
     public string Pais {get; set;}
     public string provincia {get; set;}

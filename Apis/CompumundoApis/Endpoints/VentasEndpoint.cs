@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using CompumundoApis.Logica;
 using CompumundoApis.Entidades;
+using Microsoft.AspNetCore.Mvc;
+
+
 
 
 namespace CompumundoApis.Endpoints;
@@ -10,50 +13,68 @@ public static class VentasEndpoint
 {
    public static void MapVentasEndpoints(this WebApplication app)
     {
-        app.MapPost("/Ventas", async (VentasLogica ventasLogica, Ventas venta) =>
-        {
-           await ventasLogica.CrearVenta(venta);
-            return Results.Ok();
-        }); 
-
-        app.MapGet("/Ventas", async (VentasLogica ventasLogica) =>
+        // 1. Obtener todas las ventas (GET)
+        app.MapGet("/Ventas", async (
+            [FromServices] IVentasLogica ventasLogica) =>
         {
             var ventas = await ventasLogica.ObtenerTodasLasVentas();
             return Results.Ok(ventas);
         });
 
-        app.MapGet("/Ventas/{id}", async (VentasLogica ventasLogica, int id) =>
+        // 2. Obtener venta por ID (GET)
+        app.MapGet("/Ventas/{id}", async (
+            [FromServices] IVentasLogica ventasLogica, 
+            [FromRoute] int id) =>
         {
             var venta = await ventasLogica.ObtenerVentaPorId(id);
+            
             if (venta == null)
             {
                 return Results.NotFound();
             }
+            
             return Results.Ok(venta);
         });
 
-        app.MapPut("/Ventas/{id}", async (VentasLogica ventasLogica, int id, Ventas venta) =>
+        // 3. Crear venta (POST)
+        app.MapPost("/Ventas", async (
+            [FromServices] IVentasLogica ventasLogica, 
+            [FromBody] Ventas venta) =>
         {
-            var existingVenta = await ventasLogica.ObtenerVentaPorId(id);
-            if (existingVenta == null)
-            {
-                return Results.NotFound();
-            }
-
-            await ventasLogica.ActualizarVenta(id, venta);
-            return Results.Ok();
+            var nuevaVenta = await ventasLogica.CrearVenta(venta);
+            
+            return Results.Created($"/Ventas/{nuevaVenta.VentasId}", nuevaVenta); 
         });
 
-        app.MapDelete("/Ventas/{id}", async (VentasLogica ventasLogica, int id) =>
+        // 4. Actualizar venta (PUT)
+        app.MapPut("/Ventas/{id}", async (
+            [FromServices] IVentasLogica ventasLogica, 
+            [FromRoute] int id, 
+            [FromBody] Ventas venta) =>
         {
-            var existingVenta = await ventasLogica.ObtenerVentaPorId(id);
-            if (existingVenta == null)
+            var ventaActualizada = await ventasLogica.ActualizarVenta(id, venta);
+            
+            if (ventaActualizada == null)
             {
                 return Results.NotFound();
             }
 
-            await ventasLogica.EliminarVenta(id);
-            return Results.Ok();
+            return Results.Ok(ventaActualizada);
+        });
+
+        // 5. Eliminar venta (DELETE)
+        app.MapDelete("/Ventas/{id}", async (
+            [FromServices] IVentasLogica ventasLogica, 
+            [FromRoute] int id) =>
+        {
+            var eliminado = await ventasLogica.EliminarVenta(id);
+            
+            if (!eliminado)
+            {
+                return Results.NotFound();
+            }
+
+            return Results.NoContent();
         });
     }
 }

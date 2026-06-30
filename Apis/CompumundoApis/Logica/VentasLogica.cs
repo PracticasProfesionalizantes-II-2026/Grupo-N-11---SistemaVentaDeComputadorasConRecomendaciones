@@ -4,11 +4,11 @@ using CompumundoApis.Entidades;
 
 
 namespace CompumundoApis.Logica;
-public class VentasLogicas : IVentasLogica
+public class VentasLogica : IVentasLogica
 {
     private readonly IVentasRepositorio _ventasRepositorio;
 
-    public VentasLogicas(IVentasRepositorio ventasRepositorio)
+    public VentasLogica(IVentasRepositorio ventasRepositorio)
     {
         _ventasRepositorio = ventasRepositorio;
     }

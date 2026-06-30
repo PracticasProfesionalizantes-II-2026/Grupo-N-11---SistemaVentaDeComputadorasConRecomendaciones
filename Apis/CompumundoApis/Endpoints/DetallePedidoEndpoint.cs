@@ -1,5 +1,7 @@
 using CompumundoApis.Entidades;
 using CompumundoApis.Logica;
+using Microsoft.AspNetCore.Mvc;
+
 
 
 namespace CompumundoApis.Endpoints;
@@ -7,50 +9,68 @@ public static class DetallePedidoEndpoint
 {
    public static void MapDetallePedidoEndpoints(this WebApplication app)
     {
-        app.MapPost("/DetallePedido", async (DetallePedidoLogica detallePedidoLogica, DetallePedido detallePedido) =>
+        // 1. Obtener todos los detalles de pedidos (GET)
+        app.MapGet("/DetallePedido", async (
+            [FromServices] IDetallePedidoLogica detallePedidoLogica) =>
         {
-           await detallePedidoLogica.CrearDetallePedido(detallePedido);
-            return Results.Ok();
-        }); 
-
-        app.MapGet("/DetallePedido", async (DetallePedidoLogica detallePedidoLogica) =>
-        {
-            var detallesPedidos = await detallePedidoLogica.ObtenerTodosLosDetallesPedidos();
-            return Results.Ok(detallesPedidos);
+            var detalles = await detallePedidoLogica.ObtenerTodosLosDetallesPedidos();
+            return Results.Ok(detalles);
         });
 
-        app.MapGet("/DetallePedido/{id}", async (DetallePedidoLogica detallePedidoLogica, int id) =>
+        // 2. Obtener detalle de pedido por ID (GET)
+        app.MapGet("/DetallePedido/{id}", async (
+            [FromServices] IDetallePedidoLogica detallePedidoLogica, 
+            [FromRoute] int id) =>
         {
-            var detallePedido = await detallePedidoLogica.ObtenerDetallePedidoPorId(id);
-            if (detallePedido == null)
+            var detalle = await detallePedidoLogica.ObtenerDetallePedidoPorId(id);
+            
+            if (detalle == null)
             {
                 return Results.NotFound();
             }
-            return Results.Ok(detallePedido);
+            
+            return Results.Ok(detalle);
         });
 
-        app.MapPut("/DetallePedido/{id}", async (DetallePedidoLogica detallePedidoLogica, int id, DetallePedido detallePedido) =>
+        // 3. Crear detalle de pedido (POST)
+        app.MapPost("/DetallePedido", async (
+            [FromServices] IDetallePedidoLogica detallePedidoLogica, 
+            [FromBody] DetallePedido detallePedido) =>
         {
-            var existingDetallePedido = await detallePedidoLogica.ObtenerDetallePedidoPorId(id);
-            if (existingDetallePedido == null)
+            var nuevoDetalle = await detallePedidoLogica.CrearDetallePedido(detallePedido);
+            
+            return Results.Created($"/DetallePedido/{nuevoDetalle.DetallePedidoId}", nuevoDetalle); 
+        });
+
+        // 4. Actualizar detalle de pedido (PUT)
+        app.MapPut("/DetallePedido/{id}", async (
+            [FromServices] IDetallePedidoLogica detallePedidoLogica, 
+            [FromRoute] int id, 
+            [FromBody] DetallePedido detallePedido) =>
+        {
+            var detalleActualizado = await detallePedidoLogica.ActualizarDetallePedido(id, detallePedido);
+            
+            if (detalleActualizado == null)
             {
                 return Results.NotFound();
             }
 
-            await detallePedidoLogica.ActualizarDetallePedido(id, detallePedido);
-            return Results.Ok();
+            return Results.Ok(detalleActualizado);
         });
 
-        app.MapDelete("/DetallePedido/{id}", async (DetallePedidoLogica detallePedidoLogica, int id) =>
+        // 5. Eliminar detalle de pedido (DELETE)
+        app.MapDelete("/DetallePedido/{id}", async (
+            [FromServices] IDetallePedidoLogica detallePedidoLogica, 
+            [FromRoute] int id) =>
         {
-            var existingDetallePedido = await detallePedidoLogica.ObtenerDetallePedidoPorId(id);
-            if (existingDetallePedido == null)
+            var eliminado = await detallePedidoLogica.EliminarDetallePedido(id);
+            
+            if (!eliminado)
             {
                 return Results.NotFound();
             }
 
-            await detallePedidoLogica.EliminarDetallePedido(id);
-            return Results.Ok();
+            return Results.NoContent();
         });
     }
 }

@@ -8,6 +8,17 @@ public class Pedido
     public int ClienteId { get; set; }
     public int IdAdministrador { get; set; }
     public DateTime FechaPedido { get; set; }
-    public Enum EstadoPedido { get; set; }
+    public EstadoPedido Estado { get; set; }
     public decimal Total { get; set; }
+
+    
+    
+    
+    //Defino el enum
+    public enum EstadoPedido 
+{
+    Pendiente,
+    EnProceso,
+    Entregado
+}
 }

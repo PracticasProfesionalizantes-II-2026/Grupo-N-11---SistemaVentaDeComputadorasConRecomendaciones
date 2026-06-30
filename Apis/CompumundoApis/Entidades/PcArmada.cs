@@ -3,7 +3,7 @@ namespace CompumundoApis.Entidades;
 
 public class PcArmada
 {
-    public int IdPcArmada{ get; set; }
+    public int PcArmadaId{ get; set; }
     public string Nombre { get; set; }
     public decimal PrecioTotal { get; set; }
     public string Descripcion { get; set; }

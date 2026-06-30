@@ -1,9 +1,9 @@
-
 using CompumundoApis.Datos;
 using CompumundoApis.Repositorios;
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
 using CompumundoApis.Endpoints;
+using CompumundoApis.Logica;
 
 
 
@@ -21,9 +21,16 @@ builder.Services.AddScoped<IProveedorRepositorio, ProveedorRepositorio>();
 builder.Services.AddScoped<IPcArmadaRepositorio, PcArmadaRepositorio>();
 builder.Services.AddScoped<IVentasRepositorio, VentasRepositorio>();
 
-
-
-
+builder.Services.AddScoped<IProductoLogica, ProductoLogica>();
+builder.Services.AddScoped<IAdministradorLogica, AdministradorLogica>();
+builder.Services.AddScoped<IClienteLogica, ClienteLogica>();
+builder.Services.AddScoped<ICuentaClienteLogica, CuentaClienteLogica>();
+builder.Services.AddScoped<IDetallePedidoLogica, DetallePedidoLogica>();
+builder.Services.AddScoped<IPcArmadaLogica, PcArmadaLogica>();
+builder.Services.AddScoped<IPedidoLogica, PedidoLogica>();
+builder.Services.AddScoped<IProductoLogica, ProductoLogica>();
+builder.Services.AddScoped<IProveedorLogica, ProveedorLogica>();
+builder.Services.AddScoped<IVentasLogica, VentasLogica>();
 
 builder.Services.AddOpenApi();
 

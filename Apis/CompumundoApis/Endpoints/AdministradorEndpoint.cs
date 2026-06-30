@@ -1,6 +1,6 @@
 using CompumundoApis.Entidades;
 using CompumundoApis.Logica;
-
+using Microsoft.AspNetCore.Mvc;
 
 namespace CompumundoApis.Endpoints;
 
@@ -8,50 +8,69 @@ public static class AdministradorEndpoint
 {
    public static void MapAdministradorEndpoints(this WebApplication app)
     {
-        app.MapPost("/Administrador", async (AdministradorLogica administradorLogica, Administrador administrador) =>
-        {
-           await administradorLogica.CrearAdministrador(administrador);
-            return Results.Ok();
-        }); 
-
-        app.MapGet("/Administrador", async (AdministradorLogica administradorLogica) =>
+        
+        app.MapGet("/Administrador", async (
+            [FromServices] IAdministradorLogica administradorLogica) =>
         {
             var administradores = await administradorLogica.ObtenerTodosLosAdministradores();
             return Results.Ok(administradores);
         });
 
-        app.MapGet("/Administrador/{id}", async (AdministradorLogica administradorLogica, int id) =>
+        
+        app.MapGet("/Administrador/{id}", async (
+            [FromServices] IAdministradorLogica administradorLogica, 
+            [FromRoute] int id) =>
         {
             var administrador = await administradorLogica.ObtenerAdministradorPorId(id);
+            
             if (administrador == null)
             {
                 return Results.NotFound();
             }
+            
             return Results.Ok(administrador);
         });
 
-        app.MapPut("/Administrador/{id}", async (AdministradorLogica administradorLogica, int id, Administrador administrador) =>
+       
+        app.MapPost("/Administrador", async (
+            [FromServices] IAdministradorLogica administradorLogica, 
+            [FromBody] Administrador administrador) =>
         {
-            var existingAdministrador = await administradorLogica.ObtenerAdministradorPorId(id);
-            if (existingAdministrador == null)
-            {
-                return Results.NotFound();
-            }
-
-            await administradorLogica.ActualizarAdministrador(id, administrador);
-            return Results.Ok();
+            var nuevoAdministrador = await administradorLogica.CrearAdministrador(administrador);
+            
+            // Buena práctica: devolver 201 Created cuando se inserta algo nuevo
+            return Results.Created($"/Administrador/{nuevoAdministrador.Id}", nuevoAdministrador); 
         });
 
-        app.MapDelete("/Administrador/{id}", async (AdministradorLogica administradorLogica, int id) =>
+        
+        app.MapPut("/Administrador/{id}", async (
+            [FromServices] IAdministradorLogica administradorLogica, 
+            [FromRoute] int id, 
+            [FromBody] Administrador administrador) =>
         {
-            var existingAdministrador = await administradorLogica.ObtenerAdministradorPorId(id);
-            if (existingAdministrador == null)
+            var adminActualizado = await administradorLogica.ActualizarAdministrador(id, administrador);
+            
+            if (adminActualizado == null)
             {
                 return Results.NotFound();
             }
 
-            await administradorLogica.EliminarAdministrador(id);
-            return Results.Ok();
+            return Results.Ok(adminActualizado);
+        });
+
+        
+        app.MapDelete("/Administrador/{id}", async (
+            [FromServices] IAdministradorLogica administradorLogica, 
+            [FromRoute] int id) =>
+        {
+            var eliminado = await administradorLogica.EliminarAdministrador(id);
+            
+            if (!eliminado) // Si devolvió false, asumimos que no existía
+            {
+                return Results.NotFound();
+            }
+
+            return Results.NoContent(); // 204 NoContent es el estándar para un Delete exitoso
         });
     }    
 }
