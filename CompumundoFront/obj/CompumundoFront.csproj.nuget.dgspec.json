@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\Matt-\\Desktop\\MattSaurus\\ICES\\3ro\\Practica profecionalizante 2\\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\\CompumundoFront\\CompumundoFront.csproj": {}
+    "C:\\Users\\Matt-\\Desktop\\MattSaurus\\ICES\\3ro\\Practica profecionalizante 2\\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\\CompumundoFront\\CompumundoFront.csproj": {}
   },
   "projects": {
-    "c:\\Users\\Matt-\\Desktop\\MattSaurus\\ICES\\3ro\\Practica profecionalizante 2\\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\\CompumundoFront\\CompumundoFront.csproj": {
+    "C:\\Users\\Matt-\\Desktop\\MattSaurus\\ICES\\3ro\\Practica profecionalizante 2\\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\\CompumundoFront\\CompumundoFront.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\Matt-\\Desktop\\MattSaurus\\ICES\\3ro\\Practica profecionalizante 2\\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\\CompumundoFront\\CompumundoFront.csproj",
+        "projectUniqueName": "C:\\Users\\Matt-\\Desktop\\MattSaurus\\ICES\\3ro\\Practica profecionalizante 2\\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\\CompumundoFront\\CompumundoFront.csproj",
         "projectName": "CompumundoFront",
-        "projectPath": "c:\\Users\\Matt-\\Desktop\\MattSaurus\\ICES\\3ro\\Practica profecionalizante 2\\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\\CompumundoFront\\CompumundoFront.csproj",
+        "projectPath": "C:\\Users\\Matt-\\Desktop\\MattSaurus\\ICES\\3ro\\Practica profecionalizante 2\\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\\CompumundoFront\\CompumundoFront.csproj",
         "packagesPath": "C:\\Users\\Matt-\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\Matt-\\Desktop\\MattSaurus\\ICES\\3ro\\Practica profecionalizante 2\\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\\CompumundoFront\\obj\\",
+        "outputPath": "C:\\Users\\Matt-\\Desktop\\MattSaurus\\ICES\\3ro\\Practica profecionalizante 2\\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\\CompumundoFront\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Matt-\\AppData\\Roaming\\NuGet\\NuGet.Config",
