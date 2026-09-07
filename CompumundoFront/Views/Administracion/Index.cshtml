@@ -1,0 +1,15 @@
+@{ ViewData["Title"] = "Administración"; }
+<section class="admin-page"><div class="container">
+    <div class="admin-header"><div><p class="eyebrow">PANEL INTERNO</p><h1>Administración de datos</h1><p>Gestioná los registros de todas las APIs del proyecto desde un solo lugar.</p></div><a class="secondary-outline" asp-controller="Home" asp-action="Index">← Volver a la tienda</a></div>
+    <div class="admin-layout">
+        <aside class="admin-sidebar"><p class="sidebar-title">ENTIDADES</p><div id="resource-menu" class="resource-menu"></div></aside>
+        <section class="admin-content">
+            <div class="admin-toolbar"><div><p class="eyebrow" id="resource-label"></p><h2 id="resource-title"></h2></div><div class="id-search"><input id="id-search" type="number" min="1" placeholder="ID" aria-label="Buscar por ID"><button id="find-by-id" class="small-button" type="button">Buscar</button><button id="refresh-list" class="small-button muted-button" type="button">Actualizar</button></div></div>
+            <div id="admin-message" class="admin-message" role="status"></div>
+            <div class="admin-table-wrap"><table class="admin-table"><thead id="records-head"></thead><tbody id="records-body"></tbody></table></div>
+        </section>
+    </div>
+</div></section>
+<div class="modal fade" id="record-modal" tabindex="-1" aria-labelledby="record-modal-title" aria-hidden="true"><div class="modal-dialog modal-lg modal-dialog-scrollable"><div class="modal-content record-modal"><div class="modal-header"><div><p class="eyebrow" id="form-mode"></p><h2 id="record-modal-title"></h2></div><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Cerrar"></button></div><form id="record-form"><div id="form-fields" class="record-fields"></div><div class="modal-footer"><button class="secondary-outline" type="button" data-bs-dismiss="modal">Cancelar</button><button class="primary-button" type="submit">Guardar</button></div></form></div></div></div>
+<button class="admin-add" id="add-record" type="button" aria-label="Agregar registro">＋ <span>Agregar</span></button>
+@section Scripts { <script src="~/js/administracion.js" asp-append-version="true"></script> }
