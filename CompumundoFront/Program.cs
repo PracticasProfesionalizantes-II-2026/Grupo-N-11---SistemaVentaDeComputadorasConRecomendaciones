@@ -2,6 +2,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddHttpClient("CompumundoApi", client =>
+{
+    client.BaseAddress = new Uri(builder.Configuration["Api:BaseUrl"] ?? "http://localhost:5080/");
+    client.Timeout = TimeSpan.FromSeconds(5);
+});
 
 var app = builder.Build();
 
