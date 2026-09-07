@@ -196,4 +196,4 @@ C:\Users\Usuario\Documents\GitHub\Grupo-N-11---SistemaVentaDeComputadorasConReco
 C:\Users\Usuario\Documents\GitHub\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\CompumundoFront\obj\Debug\net10.0\CompumundoFront.genruntimeconfig.cache
 C:\Users\Usuario\Documents\GitHub\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\CompumundoFront\obj\Debug\net10.0\ref\CompumundoFront.dll
 C:\Users\Usuario\Documents\GitHub\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\CompumundoFront\obj\Debug\net10.0\compressed\bu7bkjp29j-{0}-scn1wgih5b-scn1wgih5b.gz
-C:\Users\Usuario\Documents\GitHub\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\CompumundoFront\obj\Debug\net10.0\compressed\2j210wgalr-{0}-3rh8ymrngp-3rh8ymrngp.gz
+C:\Users\Usuario\Documents\GitHub\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\CompumundoFront\obj\Debug\net10.0\compressed\2j210wgalr-{0}-zcfc7ampv5-zcfc7ampv5.gz
