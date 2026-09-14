@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Matt-\\Desktop\\MattSaurus\\ICES\\3ro\\Practica profecionalizante 2\\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\\Apis\\CompumundoApis\\CompumundoApis.csproj": {}
+    "C:\\Users\\Usuario\\Documents\\GitHub\\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\\Apis\\CompumundoApis\\CompumundoApis.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Matt-\\Desktop\\MattSaurus\\ICES\\3ro\\Practica profecionalizante 2\\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\\Apis\\CompumundoApis\\CompumundoApis.csproj": {
+    "C:\\Users\\Usuario\\Documents\\GitHub\\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\\Apis\\CompumundoApis\\CompumundoApis.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Matt-\\Desktop\\MattSaurus\\ICES\\3ro\\Practica profecionalizante 2\\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\\Apis\\CompumundoApis\\CompumundoApis.csproj",
+        "projectUniqueName": "C:\\Users\\Usuario\\Documents\\GitHub\\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\\Apis\\CompumundoApis\\CompumundoApis.csproj",
         "projectName": "CompumundoApis",
-        "projectPath": "C:\\Users\\Matt-\\Desktop\\MattSaurus\\ICES\\3ro\\Practica profecionalizante 2\\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\\Apis\\CompumundoApis\\CompumundoApis.csproj",
-        "packagesPath": "C:\\Users\\Matt-\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Matt-\\Desktop\\MattSaurus\\ICES\\3ro\\Practica profecionalizante 2\\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\\Apis\\CompumundoApis\\obj\\",
+        "projectPath": "C:\\Users\\Usuario\\Documents\\GitHub\\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\\Apis\\CompumundoApis\\CompumundoApis.csproj",
+        "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Usuario\\Documents\\GitHub\\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\\Apis\\CompumundoApis\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Matt-\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -85,7 +89,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.203/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.204/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.AspNetCore": "(,10.0.32767]",
             "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",
