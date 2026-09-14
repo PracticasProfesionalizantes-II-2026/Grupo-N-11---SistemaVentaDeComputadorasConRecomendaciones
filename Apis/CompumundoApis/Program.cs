@@ -55,6 +55,7 @@ app.MapPedidoEndpoints();
 app.MapProductoEndpoints();
 app.MapProveedorEndpoints();
 app.MapVentasEndpoints();
+app.MapTiendaEndpoints();
 app.Run();
 
 

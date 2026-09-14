@@ -11,5 +11,6 @@ public class CuentaCliente
     public string CodigoPostal {get; set;}
     public string Calle {get; set;}
     public string NumeroCalle {get; set;}
-    
+    public int? ClienteId { get; set; }
+    public Cliente? Cliente { get; set; }
 }

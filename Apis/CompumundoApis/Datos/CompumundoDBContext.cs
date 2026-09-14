@@ -15,4 +15,18 @@ public class AppDbContext : DbContext
     public DbSet<Ventas> Ventas { get; set; }
     public DbSet<PcArmada> PcArmadas { get; set; }
     public DbSet<CuentaCliente> CuentaClientes { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+        modelBuilder.Entity<CuentaCliente>()
+            .HasOne(c => c.Cliente).WithMany(c => c.Cuentas)
+            .HasForeignKey(c => c.ClienteId).OnDelete(DeleteBehavior.SetNull);
+        modelBuilder.Entity<Pedido>()
+            .HasOne(p => p.Cliente).WithMany(c => c.Pedidos)
+            .HasForeignKey(p => p.ClienteId).OnDelete(DeleteBehavior.SetNull);
+        modelBuilder.Entity<DetallePedido>()
+            .HasOne(d => d.Pedido).WithMany(p => p.Detalles)
+            .HasForeignKey(d => d.PedidoId).OnDelete(DeleteBehavior.SetNull);
+    }
 }

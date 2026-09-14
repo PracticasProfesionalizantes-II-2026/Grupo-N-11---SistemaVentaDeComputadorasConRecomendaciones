@@ -84,6 +84,9 @@ namespace CompumundoApis.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("ClienteId")
+                        .HasColumnType("int");
+
                     b.Property<string>("CodigoPostal")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -106,6 +109,8 @@ namespace CompumundoApis.Migrations
 
                     b.HasKey("CuentaClienteId");
 
+                    b.HasIndex("ClienteId");
+
                     b.ToTable("CuentaClientes");
                 });
 
@@ -117,13 +122,21 @@ namespace CompumundoApis.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DetallePedidoId"));
 
+                    b.Property<int>("Cantidad")
+                        .HasColumnType("int");
+
                     b.Property<int>("IdProducto")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("PedidoId")
                         .HasColumnType("int");
 
                     b.Property<decimal>("PrecioTotal")
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("DetallePedidoId");
+
+                    b.HasIndex("PedidoId");
 
                     b.ToTable("DetallesPedidos");
                 });
@@ -166,7 +179,7 @@ namespace CompumundoApis.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("ClienteId")
+                    b.Property<int?>("ClienteId")
                         .HasColumnType("int");
 
                     b.Property<int>("Estado")
@@ -186,6 +199,8 @@ namespace CompumundoApis.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ClienteId");
 
                     b.ToTable("Pedidos");
                 });
@@ -295,6 +310,36 @@ namespace CompumundoApis.Migrations
                     b.ToTable("Ventas");
                 });
 
+            modelBuilder.Entity("CompumundoApis.Entidades.CuentaCliente", b =>
+                {
+                    b.HasOne("CompumundoApis.Entidades.Cliente", "Cliente")
+                        .WithMany("Cuentas")
+                        .HasForeignKey("ClienteId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("Cliente");
+                });
+
+            modelBuilder.Entity("CompumundoApis.Entidades.DetallePedido", b =>
+                {
+                    b.HasOne("CompumundoApis.Entidades.Pedido", "Pedido")
+                        .WithMany("Detalles")
+                        .HasForeignKey("PedidoId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("Pedido");
+                });
+
+            modelBuilder.Entity("CompumundoApis.Entidades.Pedido", b =>
+                {
+                    b.HasOne("CompumundoApis.Entidades.Cliente", "Cliente")
+                        .WithMany("Pedidos")
+                        .HasForeignKey("ClienteId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("Cliente");
+                });
+
             modelBuilder.Entity("CompumundoApis.Entidades.Producto", b =>
                 {
                     b.HasOne("CompumundoApis.Entidades.DetallePedido", null)
@@ -306,6 +351,13 @@ namespace CompumundoApis.Migrations
                         .HasForeignKey("PcArmadaId");
                 });
 
+            modelBuilder.Entity("CompumundoApis.Entidades.Cliente", b =>
+                {
+                    b.Navigation("Cuentas");
+
+                    b.Navigation("Pedidos");
+                });
+
             modelBuilder.Entity("CompumundoApis.Entidades.DetallePedido", b =>
                 {
                     b.Navigation("Productos");
@@ -314,6 +366,11 @@ namespace CompumundoApis.Migrations
             modelBuilder.Entity("CompumundoApis.Entidades.PcArmada", b =>
                 {
                     b.Navigation("Componentes");
+                });
+
+            modelBuilder.Entity("CompumundoApis.Entidades.Pedido", b =>
+                {
+                    b.Navigation("Detalles");
                 });
 #pragma warning restore 612, 618
         }
