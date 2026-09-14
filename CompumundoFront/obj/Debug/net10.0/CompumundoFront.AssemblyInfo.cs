@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CompumundoFront")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a7780252403d93c8ec9338e413efeb3107a8d39d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e9ca66e8cbb69c67da571d83c4a0dfc5b1b44ad0")]
 [assembly: System.Reflection.AssemblyProductAttribute("CompumundoFront")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CompumundoFront")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
