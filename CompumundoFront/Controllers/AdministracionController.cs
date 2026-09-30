@@ -22,8 +22,30 @@ public class AdministracionApiController : ControllerBase
         ["administradores"] = "Administrador", ["proveedores"] = "Proveedor", ["ventas"] = "Ventas"
     };
     private readonly IHttpClientFactory _httpClientFactory;
+    private readonly IWebHostEnvironment _environment;
 
-    public AdministracionApiController(IHttpClientFactory httpClientFactory) => _httpClientFactory = httpClientFactory;
+    public AdministracionApiController(IHttpClientFactory httpClientFactory, IWebHostEnvironment environment)
+    {
+        _httpClientFactory = httpClientFactory;
+        _environment = environment;
+    }
+
+    [HttpPost("/administracion/imagenes")]
+    [RequestSizeLimit(5_000_000)]
+    public async Task<IActionResult> SubirImagen(IFormFile archivo)
+    {
+        var extensionesValidas = new[] { ".jpg", ".jpeg", ".png", ".webp" };
+        var extension = Path.GetExtension(archivo?.FileName ?? string.Empty).ToLowerInvariant();
+        if (archivo is null || archivo.Length == 0 || !extensionesValidas.Contains(extension))
+            return BadRequest(new { mensaje = "Elegí una imagen JPG, PNG o WEBP de hasta 5 MB." });
+
+        var carpeta = Path.Combine(_environment.WebRootPath, "uploads", "productos");
+        Directory.CreateDirectory(carpeta);
+        var nombre = $"{Guid.NewGuid():N}{extension}";
+        await using var destino = System.IO.File.Create(Path.Combine(carpeta, nombre));
+        await archivo.CopyToAsync(destino);
+        return Ok(new { imagenUrl = $"/uploads/productos/{nombre}" });
+    }
 
     [HttpGet]
     public Task<IActionResult> Listar(string recurso) => Enviar(recurso, HttpMethod.Get);

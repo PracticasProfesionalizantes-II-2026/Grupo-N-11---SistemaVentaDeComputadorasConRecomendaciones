@@ -198,3 +198,6 @@ C:\Users\Usuario\Documents\GitHub\Grupo-N-11---SistemaVentaDeComputadorasConReco
 C:\Users\Usuario\Documents\GitHub\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\CompumundoFront\obj\Debug\net10.0\compressed\2j210wgalr-{0}-zcfc7ampv5-zcfc7ampv5.gz
 C:\Users\Usuario\Documents\GitHub\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\CompumundoFront\obj\Debug\net10.0\compressed\4iv8hen61n-{0}-7bn5pl6h9y-7bn5pl6h9y.gz
 C:\Users\Usuario\Documents\GitHub\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\CompumundoFront\obj\Debug\net10.0\compressed\93sw8n7rr1-{0}-lg2kzyog2r-lg2kzyog2r.gz
+C:\Users\Usuario\Documents\GitHub\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\CompumundoFront\obj\Debug\net10.0\compressed\ykj5sdfpm5-{0}-a0vshwjqc8-a0vshwjqc8.gz
+C:\Users\Usuario\Documents\GitHub\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\CompumundoFront\obj\Debug\net10.0\compressed\2j210wgalr-{0}-svuzluqveg-svuzluqveg.gz
+C:\Users\Usuario\Documents\GitHub\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\CompumundoFront\obj\Debug\net10.0\compressed\93sw8n7rr1-{0}-xt49ivqvh2-xt49ivqvh2.gz

@@ -41,6 +41,12 @@ public class ProductoRepositorio : IProductoRepositorio
         productoExistente.Descripcion = producto.Descripcion;
         productoExistente.Precio = producto.Precio;
         productoExistente.Stock = producto.Stock;
+        productoExistente.Marca = producto.Marca;
+        productoExistente.Modelo = producto.Modelo;
+        productoExistente.ImagenUrl = producto.ImagenUrl;
+        productoExistente.idDetallePedido = producto.idDetallePedido;
+        productoExistente.idProveedor = producto.idProveedor;
+        productoExistente.IdAdministrador = producto.IdAdministrador;
 
         await _context.SaveChangesAsync();
         return productoExistente;

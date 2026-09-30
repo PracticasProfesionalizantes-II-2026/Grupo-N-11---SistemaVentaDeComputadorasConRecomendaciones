@@ -223,6 +223,9 @@ namespace CompumundoApis.Migrations
                     b.Property<int>("IdAdministrador")
                         .HasColumnType("int");
 
+                    b.Property<string>("ImagenUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Marca")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
