@@ -317,3 +317,4 @@ C:\Users\Usuario\Documents\GitHub\Grupo-N-11---SistemaVentaDeComputadorasConReco
 C:\Users\Usuario\Documents\GitHub\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\Apis\CompumundoApis\obj\Debug\net10.0\CompumundoApis.pdb
 C:\Users\Usuario\Documents\GitHub\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\Apis\CompumundoApis\obj\Debug\net10.0\CompumundoApis.genruntimeconfig.cache
 C:\Users\Usuario\Documents\GitHub\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\Apis\CompumundoApis\obj\Debug\net10.0\ref\CompumundoApis.dll
+C:\Users\Usuario\Documents\GitHub\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\Apis\CompumundoApis\bin\Debug\net10.0\CompumundoApis.exe
