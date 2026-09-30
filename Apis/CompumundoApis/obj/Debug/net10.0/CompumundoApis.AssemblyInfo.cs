@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CompumundoApis")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f448bb6ef78034726674fbed0b70bda95bd92a05")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+44164ecb78f61d4e4f0a04c6caa360bdde745530")]
 [assembly: System.Reflection.AssemblyProductAttribute("CompumundoApis")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CompumundoApis")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
