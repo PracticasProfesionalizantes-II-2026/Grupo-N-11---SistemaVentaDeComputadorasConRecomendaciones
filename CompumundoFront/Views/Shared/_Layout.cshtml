@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="~/css/administracion.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/admin-extra.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/tienda.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/configurador.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/CompumundoFront.styles.css" asp-append-version="true" />
 </head>
 <body>
@@ -25,7 +26,7 @@
                     <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index" asp-fragment="prearmadas">Prearmadas</a></li>
                     <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index" asp-fragment="nosotros">Nosotros</a></li>
                     <li class="nav-item"><button class="nav-link account-button" id="account-button" type="button">Ingresar</button></li>
-                    <li class="nav-item"><a class="nav-link" asp-controller="Administracion" asp-action="Index">Administración</a></li>
+                    <li class="nav-item"><a class="nav-link" id="admin-link" asp-controller="Administracion" asp-action="Index">Administración</a></li>
                     <li class="nav-item"><button class="cart-button" type="button" data-bs-toggle="offcanvas" data-bs-target="#carrito" aria-controls="carrito">🛒 <span id="cart-count">0</span></button></li>
                 </ul></div>
             </div>
@@ -33,7 +34,8 @@
     </header>
     <main role="main">@RenderBody()</main>
     <div class="offcanvas offcanvas-end" tabindex="-1" id="carrito" aria-labelledby="carrito-titulo"><div class="offcanvas-header"><h2 class="offcanvas-title" id="carrito-titulo">Tu carrito</h2><button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button></div><div class="offcanvas-body"><div id="cart-items"><p class="empty-cart">Todavía no agregaste productos.</p></div><div class="cart-summary"><strong>Total: <span id="cart-total">$0</span></strong><button class="primary-button full-button" type="button" id="checkout-button">Finalizar compra</button></div></div></div>
+    <div class="modal fade" id="admin-login-modal" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content form-modal"><div class="modal-header"><div><p class="eyebrow">ACCESO INTERNO</p><h2>Administración</h2></div><button class="btn-close" type="button" data-bs-dismiss="modal"></button></div><form id="admin-login-form"><div class="modal-body"><label>Código de administrador<input name="codigoAdmin" required></label><label>Contraseña<input name="contrasenia" type="password" required></label><p class="form-message" id="admin-login-message"></p></div><div class="modal-footer"><button class="primary-button" type="submit">Ingresar</button></div></form></div></div></div>
     <footer class="site-footer"><div class="container footer-content"><a class="brand" asp-controller="Home" asp-action="Index"><span>COMPU</span>MUNDO</a><p>Tu tienda de tecnología, simple y cerca.</p></div></footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script><script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script><script src="~/js/site.js" asp-append-version="true"></script>@await RenderSectionAsync("Scripts", required: false)
+    <script src="~/lib/jquery/dist/jquery.min.js"></script><script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script><script src="~/js/site.js" asp-append-version="true"></script><script src="~/js/admin-access.js" asp-append-version="true"></script>@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

@@ -8,7 +8,12 @@ namespace CompumundoFront.Controllers;
 
 public class AdministracionController : Controller
 {
-    public IActionResult Index() => View();
+    public IActionResult Index()
+    {
+        if (HttpContext.Session.GetInt32("AdminId") is null)
+            return RedirectToAction("Index", "Home");
+        return View();
+    }
 }
 
 [ApiController]
@@ -34,6 +39,7 @@ public class AdministracionApiController : ControllerBase
     [RequestSizeLimit(5_000_000)]
     public async Task<IActionResult> SubirImagen(IFormFile archivo)
     {
+        if (!EsAdministrador()) return Unauthorized();
         var extensionesValidas = new[] { ".jpg", ".jpeg", ".png", ".webp" };
         var extension = Path.GetExtension(archivo?.FileName ?? string.Empty).ToLowerInvariant();
         if (archivo is null || archivo.Length == 0 || !extensionesValidas.Contains(extension))
@@ -64,6 +70,7 @@ public class AdministracionApiController : ControllerBase
 
     private async Task<IActionResult> Enviar(string recurso, HttpMethod metodo, int? id = null, JsonElement? datos = null)
     {
+        if (!EsAdministrador()) return Unauthorized(new { mensaje = "Iniciá sesión como administrador." });
         if (!Recursos.TryGetValue(recurso, out var ruta)) return NotFound(new { mensaje = "Recurso no encontrado." });
         try
         {
@@ -78,4 +85,6 @@ public class AdministracionApiController : ControllerBase
             return StatusCode((int)HttpStatusCode.ServiceUnavailable, new { mensaje = "No se pudo conectar con la API." });
         }
     }
+
+    private bool EsAdministrador() => HttpContext.Session.GetInt32("AdminId") is not null;
 }

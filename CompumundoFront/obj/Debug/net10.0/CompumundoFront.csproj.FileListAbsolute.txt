@@ -100,7 +100,6 @@ C:\Users\Usuario\Documents\GitHub\Grupo-N-11---SistemaVentaDeComputadorasConReco
 C:\Users\Usuario\Documents\GitHub\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\CompumundoFront\bin\Debug\net10.0\appsettings.Development.json
 C:\Users\Usuario\Documents\GitHub\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\CompumundoFront\bin\Debug\net10.0\CompumundoFront.staticwebassets.runtime.json
 C:\Users\Usuario\Documents\GitHub\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\CompumundoFront\bin\Debug\net10.0\CompumundoFront.staticwebassets.endpoints.json
-C:\Users\Usuario\Documents\GitHub\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\CompumundoFront\bin\Debug\net10.0\CompumundoFront.exe
 C:\Users\Usuario\Documents\GitHub\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\CompumundoFront\bin\Debug\net10.0\CompumundoFront.deps.json
 C:\Users\Usuario\Documents\GitHub\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\CompumundoFront\bin\Debug\net10.0\CompumundoFront.runtimeconfig.json
 C:\Users\Usuario\Documents\GitHub\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\CompumundoFront\bin\Debug\net10.0\CompumundoFront.dll
@@ -198,4 +197,6 @@ C:\Users\Usuario\Documents\GitHub\Grupo-N-11---SistemaVentaDeComputadorasConReco
 C:\Users\Usuario\Documents\GitHub\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\CompumundoFront\obj\Debug\net10.0\compressed\4iv8hen61n-{0}-7bn5pl6h9y-7bn5pl6h9y.gz
 C:\Users\Usuario\Documents\GitHub\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\CompumundoFront\obj\Debug\net10.0\compressed\ykj5sdfpm5-{0}-a0vshwjqc8-a0vshwjqc8.gz
 C:\Users\Usuario\Documents\GitHub\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\CompumundoFront\obj\Debug\net10.0\compressed\2j210wgalr-{0}-svuzluqveg-svuzluqveg.gz
-C:\Users\Usuario\Documents\GitHub\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\CompumundoFront\obj\Debug\net10.0\compressed\93sw8n7rr1-{0}-xt49ivqvh2-xt49ivqvh2.gz
+C:\Users\Usuario\Documents\GitHub\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\CompumundoFront\obj\Debug\net10.0\compressed\ubqvonlkwa-{0}-x9mu1b3ofp-x9mu1b3ofp.gz
+C:\Users\Usuario\Documents\GitHub\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\CompumundoFront\obj\Debug\net10.0\compressed\o7ufgosbbj-{0}-40gklfv4i0-40gklfv4i0.gz
+C:\Users\Usuario\Documents\GitHub\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\CompumundoFront\obj\Debug\net10.0\compressed\93sw8n7rr1-{0}-kt30ppwwfm-kt30ppwwfm.gz

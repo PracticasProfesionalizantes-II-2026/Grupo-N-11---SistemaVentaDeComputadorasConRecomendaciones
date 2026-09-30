@@ -30,6 +30,23 @@ public static class TiendaEndpoint
                 : Results.Ok(new ClienteSesion(cliente.Id, cliente.Nombre, cliente.CorreoElectronico));
         });
 
+        app.MapPost("/Auth/AdminLogin", async (AdminLoginRequest request, AppDbContext db) =>
+        {
+            var admin = await db.Administradores.FirstOrDefaultAsync(a => a.CodigoAdmin == request.CodigoAdmin && a.ContraseniaAdmin == request.Contrasenia);
+            return admin is null ? Results.Unauthorized() : Results.Ok(new { admin.Id, admin.CodigoAdmin });
+        });
+
+        app.MapPost("/PcArmada/Configurar", async (ConfigurarPcRequest request, AppDbContext db) =>
+        {
+            if (string.IsNullOrWhiteSpace(request.Nombre) || request.Componentes.Count == 0)
+                return Results.BadRequest(new { mensaje = "Indicá un nombre y al menos un componente." });
+            var componentes = await db.Productos.Where(p => request.Componentes.Contains(p.id)).ToListAsync();
+            if (componentes.Count != request.Componentes.Distinct().Count()) return Results.BadRequest(new { mensaje = "Hay componentes inválidos." });
+            var pc = new PcArmada { Nombre = request.Nombre.Trim(), Descripcion = request.Descripcion?.Trim() ?? "PC configurada por el cliente.", PrecioTotal = componentes.Sum(p => (decimal)p.Precio), Componentes = componentes, IdProducto = 0, IdDetallePedido = 0 };
+            db.PcArmadas.Add(pc); await db.SaveChangesAsync();
+            return Results.Created($"/PcArmada/{pc.PcArmadaId}", pc);
+        });
+
         app.MapPost("/Compra", async (CompraRequest request, AppDbContext db) =>
         {
             var cliente = await db.Clientes.FindAsync(request.ClienteId);
@@ -47,11 +64,13 @@ public static class TiendaEndpoint
                 producto.Stock -= item.Cantidad;
                 pedido.Detalles.Add(new DetallePedido { IdProducto = producto.id, Cantidad = item.Cantidad, PrecioTotal = (decimal)producto.Precio * item.Cantidad });
             }
-            pedido.Total = pedido.Detalles.Sum(d => d.PrecioTotal);
+            var subtotal = pedido.Detalles.Sum(d => d.PrecioTotal);
+            var impuesto = Math.Round(subtotal * 0.21m, 2);
+            pedido.Total = subtotal + impuesto;
             db.CuentaClientes.Add(cuenta);
             db.Pedidos.Add(pedido);
             await db.SaveChangesAsync();
-            return Results.Created($"/Pedido/{pedido.Id}", new { pedido.Id, pedido.Total, Estado = pedido.Estado.ToString(), CuentaClienteId = cuenta.CuentaClienteId });
+            return Results.Created($"/Pedido/{pedido.Id}", new { pedido.Id, pedido.Total, Subtotal = subtotal, Impuesto = impuesto, Estado = pedido.Estado.ToString(), CuentaClienteId = cuenta.CuentaClienteId });
         });
 
         app.MapGet("/Cliente/{clienteId:int}/Pedidos", async (int clienteId, AppDbContext db) =>
@@ -64,6 +83,8 @@ public static class TiendaEndpoint
 
     public record RegistroRequest(string Nombre, string CorreoElectronico, string Contrasenia);
     public record LoginRequest(string CorreoElectronico, string Contrasenia);
+    public record AdminLoginRequest(string CodigoAdmin, string Contrasenia);
+    public record ConfigurarPcRequest(string Nombre, string? Descripcion, List<int> Componentes);
     public record ClienteSesion(int Id, string Nombre, string CorreoElectronico);
     public record ItemCompra(int ProductoId, int Cantidad);
     public record DireccionCompra(string Facturacion, string Pais, string Provincia, string Ciudad, string CodigoPostal, string Calle, string NumeroCalle);

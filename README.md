@@ -21,3 +21,41 @@ Matias Windey, Gabriel Ferrero y Lucio Pavan
 
 [Documentacion Apis](https://docs.google.com/document/d/16MAnE_AXPwHJ2vYbzj2iSbfpEPhxyw0lgFYeC1fT6W0/edit?tab=t.0)
 
+## Ejecución del proyecto
+
+El proyecto usado para la entrega está formado por dos aplicaciones:
+
+1. `Apis/CompumundoApis`: API y base de datos.
+2. `CompumundoFront`: tienda web y panel de administración.
+
+Primero se debe configurar la cadena `DefaultConnection` en `Apis/CompumundoApis/appsettings.Development.json`. Para SQL Server LocalDB se puede utilizar:
+
+```json
+"DefaultConnection": "Server=(localdb)\\MSSQLLocalDB;Database=CompumundoDB;Trusted_Connection=True;TrustServerCertificate=True;"
+```
+
+Después, desde la carpeta de la API, aplicar las migraciones:
+
+```powershell
+dotnet ef database update
+dotnet run --launch-profile http
+```
+
+En otra terminal, iniciar el frontend:
+
+```powershell
+cd CompumundoFront
+dotnet run --launch-profile http
+```
+
+La propiedad `Api:BaseUrl` de `CompumundoFront/appsettings.Development.json` debe coincidir con la URL HTTP donde se inició la API.
+
+## Funcionalidades implementadas
+
+- Registro e inicio de sesión de clientes.
+- Catálogo con búsqueda, filtros por hardware, presupuesto y uso, detalle, imágenes, comparador y carrito persistente.
+- Checkout con cuatro medios de pago, IVA automático, dirección de entrega, stock, pedido e historial de compras.
+- PCs prearmadas y configurador con verificación básica de categorías compatibles.
+- Panel de administración para clientes, staff, productos, proveedores, PCs, pedidos, cuentas, detalles y ventas.
+- Carga de imágenes JPG, PNG o WEBP para productos desde Administración.
+

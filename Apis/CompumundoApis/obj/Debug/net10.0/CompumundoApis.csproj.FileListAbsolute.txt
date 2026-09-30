@@ -161,7 +161,6 @@ C:\Users\Matt-\Desktop\MattSaurus\ICES\3ro\Practica profecionalizante 2\Grupo-N-
 C:\Users\Usuario\Documents\GitHub\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\Apis\CompumundoApis\bin\Debug\net10.0\appsettings.Development.json
 C:\Users\Usuario\Documents\GitHub\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\Apis\CompumundoApis\bin\Debug\net10.0\appsettings.json
 C:\Users\Usuario\Documents\GitHub\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\Apis\CompumundoApis\bin\Debug\net10.0\CompumundoApis.staticwebassets.endpoints.json
-C:\Users\Usuario\Documents\GitHub\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\Apis\CompumundoApis\bin\Debug\net10.0\CompumundoApis.exe
 C:\Users\Usuario\Documents\GitHub\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\Apis\CompumundoApis\bin\Debug\net10.0\CompumundoApis.deps.json
 C:\Users\Usuario\Documents\GitHub\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\Apis\CompumundoApis\bin\Debug\net10.0\CompumundoApis.runtimeconfig.json
 C:\Users\Usuario\Documents\GitHub\Grupo-N-11---SistemaVentaDeComputadorasConRecomendaciones\Apis\CompumundoApis\bin\Debug\net10.0\CompumundoApis.dll
