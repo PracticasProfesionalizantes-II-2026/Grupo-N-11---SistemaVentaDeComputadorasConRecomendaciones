@@ -1,6 +1,6 @@
 @{ ViewData["Title"] = "Administración"; }
 <section class="admin-page"><div class="container">
-    <div class="admin-header"><div><p class="eyebrow">PANEL INTERNO</p><h1>Administración de datos</h1><p>Gestioná los registros de todas las APIs del proyecto desde un solo lugar.</p></div><a class="secondary-outline" asp-controller="Home" asp-action="Index">← Volver a la tienda</a></div>
+    <div class="admin-header"><div><p class="eyebrow">PANEL INTERNO</p><h1>Administración de datos</h1><p>Gestioná los registros de todas las APIs del proyecto desde un solo lugar.</p></div><div class="admin-actions"><a class="secondary-outline" asp-controller="Home" asp-action="Index">← Volver a la tienda</a><button class="secondary-outline" id="admin-logout" type="button">Cerrar sesión</button></div></div>
     <div class="admin-layout">
         <aside class="admin-sidebar"><p class="sidebar-title">ENTIDADES</p><div id="resource-menu" class="resource-menu"></div></aside>
         <section class="admin-content">

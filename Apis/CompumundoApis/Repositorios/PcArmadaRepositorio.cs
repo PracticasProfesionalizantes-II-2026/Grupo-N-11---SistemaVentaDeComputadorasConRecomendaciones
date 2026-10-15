@@ -14,12 +14,12 @@ public class PcArmadaRepositorio : IPcArmadaRepositorio
 
     public async Task<PcArmada> ObtenerPcArmadaPorId(int id)
     {
-        return await _context.PcArmadas.FindAsync(id);
+        return await _context.PcArmadas.Include(p => p.Componentes).FirstOrDefaultAsync(p => p.PcArmadaId == id);
     }
 
     public async Task<IEnumerable<PcArmada>> ObtenerTodasLasPcsArmadas()
     {
-        return await _context.PcArmadas.ToListAsync();
+        return await _context.PcArmadas.Include(p => p.Componentes).ToListAsync();
     }
 
     public async Task<PcArmada> CrearPcArmada(PcArmada pcArmada)

@@ -37,6 +37,12 @@ public class TiendaController : ControllerBase
         }
         catch (HttpRequestException) { return StatusCode(503, new { mensaje = "No se pudo conectar con la API." }); }
     }
+    [HttpPost("admin/logout")]
+    public IActionResult AdminLogout()
+    {
+        HttpContext.Session.Clear();
+        return NoContent();
+    }
     [HttpPost("configurar-pc")]
     public Task<IActionResult> ConfigurarPc([FromBody] JsonElement datos) => Enviar(HttpMethod.Post, "PcArmada/Configurar", datos);
     [HttpPost("compra")]
