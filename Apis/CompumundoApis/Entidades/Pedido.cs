@@ -18,6 +18,7 @@ public class Pedido
 {
     Pendiente,
     EnProceso,
-    Entregado
+    Entregado,
+    Cancelado
 }
 }

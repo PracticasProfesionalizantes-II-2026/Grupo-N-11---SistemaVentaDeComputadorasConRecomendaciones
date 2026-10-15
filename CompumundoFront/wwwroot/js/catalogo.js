@@ -1,7 +1,9 @@
 (() => {
   const $=id=>document.getElementById(id), money=v=>new Intl.NumberFormat('es-AR',{style:'currency',currency:'ARS',maximumFractionDigits:0}).format(v||0), escape=v=>String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
   const productModal=new bootstrap.Modal($('product-modal')), authModal=new bootstrap.Modal($('auth-modal')), checkoutModal=new bootstrap.Modal($('checkout-modal')), ordersModal=new bootstrap.Modal($('orders-modal')), compareModal=new bootstrap.Modal($('compare-modal')), cartPanel=bootstrap.Offcanvas.getOrCreateInstance($('carrito'));
-  let products=[], selected=null, registerMode=true, cart=JSON.parse(localStorage.getItem('compumundo-cart')||'[]'), user=JSON.parse(localStorage.getItem('compumundo-user')||'null'), compare=[];
+  const stored=(key,fallback)=>{try{return JSON.parse(localStorage.getItem(key)||JSON.stringify(fallback))}catch{localStorage.removeItem(key);return fallback}};
+  let products=[], selected=null, registerMode=true, cart=stored('compumundo-cart',[]), user=stored('compumundo-user',null), compare=[];
+  if(!user?.id||!user?.nombre){user=null;localStorage.removeItem('compumundo-user')}
   const icon=p=>p.imagenUrl?`<img src="${escape(p.imagenUrl)}" alt="${escape(p.nombre)}">`:(/mouse|teclado|auricular|monitor|gpu|placa/i.test(`${p.nombre} ${p.descripcion}`)?'🧩':'💻');
   function saveCart(){localStorage.setItem('compumundo-cart',JSON.stringify(cart));renderCart()}
   const category=p=>{const t=`${p.nombre} ${p.modelo} ${p.descripcion}`.toLowerCase();return /ryzen|intel|procesador|cpu/.test(t)?'cpu':/rtx|radeon|gpu|placa de video/.test(t)?'gpu':/ram|memoria/.test(t)?'ram':/mother|motherboard|placa madre/.test(t)?'motherboard':/ssd|hdd|disco|nvme/.test(t)?'storage':'peripheral'};

@@ -43,7 +43,10 @@ public class PedidoRepositorio : IPedidoRepositorio
         // Actualizar las propiedades del pedido existente con los valores del nuevo pedido
         pedidoExistente.FechaPedido = pedido.FechaPedido;
         pedidoExistente.Total = pedido.Total;
-        // Actualiza otras propiedades según sea necesario
+        pedidoExistente.Remitente = pedido.Remitente;
+        pedidoExistente.ClienteId = pedido.ClienteId;
+        pedidoExistente.IdAdministrador = pedido.IdAdministrador;
+        pedidoExistente.Estado = pedido.Estado;
 
         await _context.SaveChangesAsync();
         return pedidoExistente;

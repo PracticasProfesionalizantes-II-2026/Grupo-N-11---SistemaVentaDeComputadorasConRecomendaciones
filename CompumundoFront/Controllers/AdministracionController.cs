@@ -65,6 +65,9 @@ public class AdministracionApiController : ControllerBase
     [HttpPut("{id:int}")]
     public Task<IActionResult> Actualizar(string recurso, int id, [FromBody] JsonElement datos) => Enviar(recurso, HttpMethod.Put, id, datos);
 
+    [HttpPut("/administracion/api/pedidos/{id:int}/estado")]
+    public Task<IActionResult> CambiarEstadoPedido(int id, [FromBody] JsonElement datos) => EnviarRuta($"Pedido/{id}/Estado", HttpMethod.Put, datos);
+
     [HttpDelete("{id:int}")]
     public Task<IActionResult> Eliminar(string recurso, int id) => Enviar(recurso, HttpMethod.Delete, id);
 
@@ -84,6 +87,18 @@ public class AdministracionApiController : ControllerBase
         {
             return StatusCode((int)HttpStatusCode.ServiceUnavailable, new { mensaje = "No se pudo conectar con la API." });
         }
+    }
+
+    private async Task<IActionResult> EnviarRuta(string ruta, HttpMethod metodo, JsonElement datos)
+    {
+        if (!EsAdministrador()) return Unauthorized(new { mensaje = "Iniciá sesión como administrador." });
+        try
+        {
+            var solicitud = new HttpRequestMessage(metodo, ruta) { Content = JsonContent.Create(datos) };
+            var respuesta = await _httpClientFactory.CreateClient("CompumundoApi").SendAsync(solicitud);
+            return new ContentResult { Content = await respuesta.Content.ReadAsStringAsync(), ContentType = "application/json", StatusCode = (int)respuesta.StatusCode };
+        }
+        catch (HttpRequestException) { return StatusCode((int)HttpStatusCode.ServiceUnavailable, new { mensaje = "No se pudo conectar con la API." }); }
     }
 
     private bool EsAdministrador() => HttpContext.Session.GetInt32("AdminId") is not null;

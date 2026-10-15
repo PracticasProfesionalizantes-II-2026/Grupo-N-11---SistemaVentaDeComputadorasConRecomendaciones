@@ -1,5 +1,7 @@
 using CompumundoApis.Entidades;
 using CompumundoApis.Logica;
+using CompumundoApis.Datos;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -10,6 +12,26 @@ public static class PedidoEndpoint
 {
    public static void MapPedidoEndpoints(this WebApplication app)
     {
+        app.MapPut("/Pedido/{id}/Estado", async (int id, EstadoPedidoRequest request, AppDbContext db) =>
+        {
+            var pedido = await db.Pedidos.Include(p => p.Detalles).FirstOrDefaultAsync(p => p.Id == id);
+            if (pedido is null) return Results.NotFound();
+            if (!Enum.IsDefined(typeof(Pedido.EstadoPedido), request.Estado))
+                return Results.BadRequest(new { mensaje = "Estado de pedido inválido." });
+            if (pedido.Estado is Pedido.EstadoPedido.Entregado or Pedido.EstadoPedido.Cancelado)
+                return Results.BadRequest(new { mensaje = "Un pedido entregado o cancelado no puede modificarse." });
+            if (request.Estado == Pedido.EstadoPedido.Cancelado)
+            {
+                foreach (var detalle in pedido.Detalles)
+                {
+                    var producto = await db.Productos.FindAsync(detalle.IdProducto);
+                    if (producto is not null) producto.Stock += detalle.Cantidad;
+                }
+            }
+            pedido.Estado = request.Estado;
+            await db.SaveChangesAsync();
+            return Results.Ok(new { pedido.Id, Estado = pedido.Estado.ToString(), pedido.Total });
+        });
         // 1. Obtener todos los pedidos (GET)
         app.MapGet("/Pedido", async (
             [FromServices] IPedidoLogica pedidoLogica) =>
@@ -74,4 +96,6 @@ public static class PedidoEndpoint
             return Results.NoContent();
         });
     }
+
+    public record EstadoPedidoRequest(Pedido.EstadoPedido Estado);
 }
